@@ -1,0 +1,561 @@
+/* Body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #7a4ff2, #b58bff); /* Light purple gradient */
+  color: #ffffff; /* White text */
+  height: 100vh;
+  display: flex;
+  flex-direction: row; /* Flex row for side panel and main content */
+  overflow: hidden; /* Prevent body scroll */
+}
+
+/* Side Panel */
+.side-panel {
+  width: 220px; /* Width of the side panel */
+  background: linear-gradient(135deg, #9a6bff, #6e44a6); /* Gradient of purple shades */
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Push content to the top */
+  align-items: center;
+  padding: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%; /* Stretch side panel to full height */
+}
+
+.side-panel h1 {
+  font-size: 32px;
+  margin-bottom: 5px; /* Reduced spacing */
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+}
+
+.side-panel h2 {
+  font-size: 18px;
+  margin-bottom: 20px; /* Added spacing below tagline */
+  color: #e0b6ff; /* Light purple for the tagline */
+}
+
+/* Chat List */
+.chat-list {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.chat-list::-webkit-scrollbar{
+  background: transparent;
+  width: 0.1px;
+  display: none;
+}
+
+.chat-list::-webkit-scrollbar-thumb{
+  background: white;
+  border-radius: 4px;
+  width: 4px;
+}
+
+.chat-list::-webkit-scrollbar-button{
+  display: none;
+}
+
+.chat-bar {
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+/* Hover Effect - Neon Glow */
+.chat-bar:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.chat-bar.active {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+  border-left: 4px solid white;
+}
+
+/* Add Chat Button */
+.add-chat-btn {
+  background: #ffffff;
+  color: #6a11cb;
+  border: 2px solid #6a11cb;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-chat-btn:hover {
+  background: #6a11cb;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Main Container */
+.calc-mate-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 100%;
+  margin-left: 250px; /* Offset main content to the right for the side panel */
+}
+
+/* Header Styles */
+.calc-header {
+  margin-top: 30px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.calc-header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+.calc-header p {
+  font-size: 18px;
+  color: #ffffff; /* White text */
+}
+
+/* "Get your doubts cleared" */
+.calc-header .tagline {
+  font-size: 40px; /* Bigger font size */
+  margin-top: 10px;
+  color: #4f4e50; /* Light purple shade for the text */
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+  margin-bottom: 2px; /* Slightly decrease the bottom margin to make it closer to the problem input */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Add subtle shadow for emphasis */
+}
+
+.tagline {
+  font-size: 18px;
+  font-family: 'Arial', sans-serif;
+  color: #007bff;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1px;
+  background-color: #000;
+  animation: blink 0.7s step-end infinite;
+}
+
+/* Cursor blinking effect */
+@keyframes blink {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #000;
+  }
+}
+
+
+
+.calc-header img {
+  margin-top: 80px;
+  margin-bottom: 15px;
+}
+
+.calc-main {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 100px; /* Ensure there's space between the solution and problem box */
+  position: relative; /* Allow positioning of the dialog below this content */
+}
+
+
+
+.chat-container {
+  position: relative; /* Changed from fixed to relative */
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-left: auto;
+  margin-right: auto; /* Added to center the container horizontally */
+}
+
+/* Chat Message */
+.chat-message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; /* Default to left alignment */
+  width: 100%;
+}
+
+.chat-message p {
+  margin: 0;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #333333;
+  max-width: 70%; /* Limit width for readability */
+  word-wrap: break-word;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* AI Message - Align to the right */
+.chat-message.ai {
+  align-items: flex-end; /* Right alignment */
+}
+
+
+.chat-message.ai p {
+  background-color: #9a6bff; /* Purple for AI */
+  color: #ffffff;
+  max-width: 80%;
+  padding-bottom: 40px;
+  align-self: flex-end; /* Ensure the paragraph itself is right-aligned */
+  margin-right: 0; /* Remove any right margin */
+}
+
+
+/* Sender Message - Align to the left */
+.chat-message.user {
+  align-items: flex-start; /* Ensure user messages align left */
+}
+
+.chat-message.user p {
+  background-color: #ffffff; /* White for user */
+  color: #333333;
+  max-width: 70%;
+  padding-bottom: 40px;
+  align-self: flex-start; /* Ensure the paragraph itself is left-aligned */
+  margin-left: 0; /* Remove any left margin */
+}
+
+/* Ensure the chat container is aligned correctly */
+.chat-container {
+  position:fixed;
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-left: auto;
+  align-items: flex-start; /* Ensure everything aligns from the left */
+}
+
+
+.button-container {
+  display: flex;
+  gap: 15px; /* Space between the buttons */
+  flex-direction: row; /* Place buttons side by side */
+  position: absolute; /* Position inside the AI message box */
+  bottom: 10px; /* Close to the bottom of the message */
+  left: 57%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to the center */
+  width: auto; /* Do not force full width */
+  padding-left: 10px; /* Add padding to the left */
+  padding-right: 10px; /* Add padding to the right */
+  box-sizing: border-box;
+}
+
+
+.follow-up-btn, .new-question-btn {
+  padding: 5px 12px;
+  border: 2px solid #9a6bff; /* Purple border */
+  border-radius: 8px;
+  background: #ffffff; /* White background */
+  color: #9a6bff; /* Purple text */
+  cursor: pointer;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.follow-up-btn:hover, .new-question-btn:hover {
+  background: #9a6bff; /* Purple background on hover */
+  color: #ffffff; /* White text on hover */
+  border: 2px solid #6e44a6; /* Darker purple border on hover */
+}
+
+.loading-message {
+  text-align: center;
+}
+.loading-dots-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+}
+
+
+
+.dots {
+  display: flex;
+  justify-content: flex-end; /* Align the dots to the right */
+  gap: 5px; /* Reduced gap between dots */
+  margin-top: 10px; /* Add some space above the dots */
+  position: absolute; /* Fix position to be relative to the parent container */
+  right: 10px; /* Position dots on the right side */
+}
+
+
+.dot {
+  width: 6px; /* Smaller size for the dot */
+  height: 6px; /* Smaller size for the dot */
+  background-color: #000000; /* Change the color to black */
+  border-radius: 50%;
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+/* Adjust the keyframes for blinking effect */
+@keyframes blink {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+
+/* Solve Button (Solid Purple) */
+.solve-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #9a6bff; /* Solid purple */
+  color: #ffffff; /* White text */
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.solve-btn:hover {
+  background: #6e44a6; /* Darker purple on hover */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+.problem-input-container {
+  position: relative; 
+  width: 100%;
+  max-width: 900px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  margin-top: 50px; /* Keep this margin fixed */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: margin-top 0.3s ease-in-out; /* Optional for smooth transition */
+}
+
+.problem-input {
+  width: 100%;
+  min-height: 150px;
+  padding: 20px;
+  padding-bottom: 60px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9); /* White background */
+  font-size: 18px;
+  color: #333333; /* Dark gray text */
+  resize: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  /*padding-right: 100px;  Make space for the button on the right */
+}
+
+/* Dropdown Button */
+.dropdown {
+  position: relative; /* Ensures it stays within normal document flow */
+  width: 100%; /* Align with other buttons */
+  text-align: center;
+}
+.button-contain {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.dropdown-btn {
+  padding: 8px 16px;
+  border: 2px solid #9a6bff; /* Purple border */
+  border-radius: 10px;
+  background: #ffffff; /* White background */
+  color: #9a6bff; /* Purple text */
+  font-size: 14px;
+  cursor: pointer;
+  width: 120px;
+  text-align: center;
+  line-height: 20px;
+}
+
+.dropdown-btn:hover {
+  background: #9a6bff; /* Purple background on hover */
+  color: #ffffff; /* White text on hover */
+  border: 2px solid #6e44a6; /* Darker purple border on hover */
+}
+
+
+.dropdown-options {
+  position: absolute;
+  top: -70px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  min-width: 200px;
+}
+
+.dropdown:hover .dropdown-options {
+  display: flex;
+}
+
+.dropdown-options button {
+  padding: 10px 20px;
+  border: 2px solid #9a6bff; /* Purple border */
+  border-radius: 8px;
+  background: #ffffff; /* White background */
+  color: #9a6bff; /* Purple text */
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.dropdown-options button:hover {
+  background: #9a6bff; /* Purple background on hover */
+  color: #ffffff; /* White text on hover */
+  border: 2px solid #6e44a6; /* Darker purple border on hover */
+}
+
+.spiral-spinner-container {
+  position: fixed;
+  top: 50%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  z-index: 1000;
+}
+
+.spiral-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid transparent;
+  border-top: 5px solid #007bff;
+  border-right: 5px solid #007bff;
+  border-radius: 50%;
+  animation: spiralSpin 1s linear infinite;
+}
+
+@keyframes spiralSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.chat-category-header {
+  padding: 8px 12px 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  margin-top: 12px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-align: left;
+}
+
+/* Add a bit more space after the last chat in a category */
+.chat-bar:last-of-type {
+  margin-bottom: 8px;
+}
+
+.download-icon-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 12px;  /* Increased padding even more */
+  margin-left: auto;
+  color: #ffffff;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font-size: 1.8rem;  /* Even larger icon size */
+  position: relative;
+  top: -5px;  /* Move it upward to be adjacent to text */
+  vertical-align: middle;
+}
+
+.download-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.download-icon-btn:focus {
+  outline: none;
+}

@@ -1,0 +1,101 @@
+<div class="login-container">
+  <!-- Left side: Calcmate AI Math Problem Solver -->
+  <div class="ai-box">
+    <h1>Calcmate</h1>
+    <p><i>Your AI-powered math problem solver</i></p>
+  </div>
+
+  <!-- Right side: Login, Signup, or Forgot Password Form -->
+  <div class="login-box">
+    <!-- Login/Signup Form -->
+    <div *ngIf="!isForgotPassword">
+      <h2>{{ isLoginMode ? 'Login' : 'Signup' }}</h2>
+      <form (ngSubmit)="onSubmit()">
+        <!-- Username Input -->
+        <div class="input-group">
+          <label for="username">Username:</label>
+          <input
+            type="text"
+            id="username"
+            [(ngModel)]="username"
+            name="username"
+            placeholder="Enter your username"
+            aria-label="Enter your username"
+            required />
+        </div>
+
+        <!-- Email Input (Only for Signup) -->
+        <div class="input-group" *ngIf="!isLoginMode">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Enter your email"
+            aria-label="Enter your email"
+            required />
+        </div>
+
+        <!-- Password Input -->
+        <div class="input-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Enter your password"
+            aria-label="Enter your password"
+            required />
+        </div>
+
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          [disabled]="!username || (!isLoginMode && !email) || !password">
+          {{ isLoginMode ? 'Login' : 'Signup' }}
+        </button>
+      </form>
+
+      <!-- Forgot Password Link -->
+      <div class="forgot-password">
+        <a (click)="toggleForgotPassword()">Forgot Password?</a>
+      </div>
+
+      <!-- Toggle Login/Signup Mode -->
+      <p class="toggle">
+        <span *ngIf="isLoginMode">
+          Don't have an account? 
+          <a (click)="toggleMode()">Signup</a>
+        </span>
+        <span *ngIf="!isLoginMode">
+          Already have an account? 
+          <a (click)="toggleMode()">Login</a>
+        </span>
+      </p>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div *ngIf="isForgotPassword">
+      <h2>Forgot Password</h2>
+      <form (ngSubmit)="onForgotPasswordSubmit()">
+        <div class="input-group">
+          <label for="forgot-email">Email:</label>
+          <input
+            type="email"
+            id="forgot-email"
+            [(ngModel)]="forgotEmail"
+            name="forgotEmail"
+            placeholder="Enter your email"
+            aria-label="Enter your email"
+            required />
+        </div>
+        <button type="submit" [disabled]="!forgotEmail">Submit</button>
+      </form>
+      <p class="toggle">
+        <a (click)="BacktoLogin()">Back to Login</a>
+      </p>
+    </div>
+  </div>
+</div>

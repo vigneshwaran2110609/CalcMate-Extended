@@ -1,0 +1,71 @@
+
+<style>
+    .table-style {
+        border-collapse: collapse;
+        width: 100%;
+        table-layout: fixed;  /* Ensures equal column width */
+        font-family: Arial, sans-serif;
+    }
+    .table-style th, .table-style td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+        white-space: pre-wrap;  /* Preserves line breaks */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .table-style th {
+        background-color: #4CAF50;
+        color: white;
+    }
+</style>
+<table border="1" class="dataframe table-style">
+  <thead>
+    <tr style="text-align: right;">
+      <th>problem</th>
+      <th>reasoning</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>P and Q each have a certain number of apples. A says to B,If you give me 10 of your apples, I will have twice the number of apples left with you.B replies,If you give me 10 of your apples, I will have the same number of apples as left with you.Find the number of apples with P and Q separately.</td>
+      <td><br>        1. Let x be the number of apples with P and y be the number of apples with Q.<br>        2. If B gives A 10 apples, then A has x + 10 and B has y - 10.<br>        3. According to A's statement, x + 10 = 2(y - 10).<br>        4. If A gives B 10 apples, then A has x - 10 and B has y + 10.<br>        5. According to B's statement, x - 10 = y + 10.<br>        Final Equations: <br>        x + 10 = 2(y - 10) and x - 10 = y + 10<br></td>
+    </tr>
+    <tr>
+      <td>On selling a T.V. at 5% gain and a fridge at 10% gain, Reliance Digital gains Rs 2000. But if it sells the T.V. at 10% gain and the fridge at 5% loss, he gains Rs 1500 on the transaction. Find the actual prices of T.V. and fridge.</td>
+      <td><br>        1. Let x be the cost price of the T.V. and y be the cost price of the fridge.<br>        2. Selling the T.V. at 5% gain gives 0.05x, and selling the fridge at 10% gain gives 0.10y.<br>        3. The total gain from selling at these rates is 0.05x + 0.10y = 2000.<br>        4. In the second scenario, the gain from selling the T.V. at 10% is 0.10x, and the loss from the fridge at 5% loss is -0.05y.<br>        5. The total gain in this case is 0.10x - 0.05y = 1500.<br>        Final Equations: <br>        0.05x + 0.10y = 2000 and 0.10x - 0.05y = 1500<br></td>
+    </tr>
+    <tr>
+      <td>A and B are friends and their ages differ by 2 years. A's father D is twice as old as A and B is twice as old as his sister C. The age of D and C differ by 40 years. Find the ages of A and B.</td>
+      <td><br>        1. Let x be the age of A and y be the age of B.<br>        2. The difference in their ages gives x - y = 2.<br>        3. Since D is twice as old as A, we have D = 2x.<br>        4. If B is twice as old as his sister C, we express C's age as C = y / 2.<br>        5. The age difference between D and C gives 2x - (y / 2) = 40.<br>        Final Equations: <br>        x - y = 2 and 2x - (y / 2) = 40<br></td>
+    </tr>
+    <tr>
+      <td>Five years hence, father's age will be three times the age of his son. Five years ago, the father was seven times as old as his son. Find their present ages.</td>
+      <td><br>        1. Let x be the father's age and y be the son's age.<br>        2. In 5 years, the father's age will be x + 5 and the son's age will be y + 5.<br>        3. Setting up the equation from the first condition, x + 5 = 3(y + 5).<br>        4. Five years ago, the father's age was x - 5 and the son's age was y - 5.<br>        5. From this condition, we have x - 5 = 7(y - 5).<br>        Final Equations: <br>        x + 5 = 3(y + 5) and x - 5 = 7(y - 5)<br></td>
+    </tr>
+    <tr>
+      <td>The ages of two friends Manjit and Ranjit differ by 3 years. Manjit's father Dharam is twice as old as Manjit and Ranjit is twice as old as his sister Jaspreet. The ages of Jaspreet and Dharam differ by 30 years. Find the ages of Manjit and Ranjit.</td>
+      <td><br>        1. Let x be the age of Manjit and y be the age of Ranjit.<br>        2. The age difference gives x - y = 3.<br>        3. Dharam's age is 2x, and Ranjit's sister's age is C = y / 2.<br>        4. The difference in ages between Dharam and Jaspreet gives 2x - (y / 2) = 30.<br>        Final Equations: <br>        x - y = 3 and 2x - (y / 2) = 30<br></td>
+    </tr>
+    <tr>
+      <td>A car rental company offers two types of cars. One type rents for $30 per day, and the other rents for $45 per day. If a customer rents the cars for a total of 6 days and the total cost is $240, write a system of linear equations to represent this information and find how many days the customer rented each type of car.</td>
+      <td><br>        1. Let x be the number of days the customer rented the $30 per day car, and y be the number of days they rented the $45 per day car.<br>        2. The total days rented is:<br>           x + y = 6<br>        3. The total cost is $240:<br>           30x + 45y = 240<br>        Final Equations:<br>           x + y = 6 and 30x + 45y = 240<br></td>
+    </tr>
+    <tr>
+      <td>A farmer has a total of 1000 meters of fencing. She wants to use the fencing to enclose a rectangular area for grazing. The length of the enclosure is 3 meters longer than twice the width. Write a system of linear equations to represent this information and find the dimensions of the enclosure.</td>
+      <td><br>        1. Let x be the width of the enclosure, and y be the length of the enclosure.<br>        2. The total fencing is used for the perimeter:<br>           2x + 2y = 1000<br>        3. The length is 3 meters longer than twice the width:<br>           y = 2x + 3<br>        Final Equations:<br>           2x + 2y = 1000 and y = 2x + 3<br></td>
+    </tr>
+    <tr>
+      <td>Two types of tickets are sold for a concert: adult tickets and child tickets. The price of an adult ticket is $25, and the price of a child ticket is $10. If 100 tickets are sold and the total revenue is $2,000, write a system of linear equations to represent this information and find how many adult and child tickets were sold.</td>
+      <td><br>        1. Let x be the number of adult tickets sold, and y be the number of child tickets sold.<br>        2. The total number of tickets sold is:<br>           x + y = 100<br>        3. The total revenue is $2,000:<br>           25x + 10y = 2000<br>        Final Equations:<br>           x + y = 100 and 25x + 10y = 2000<br></td>
+    </tr>
+    <tr>
+      <td>A train travels from city A to city B and then returns. The time it takes to travel from A to B is 2 hours less than the time it takes to travel from B to A. The total travel time for the round trip is 8 hours. Write a system of linear equations to represent this information and find the time taken for each leg of the journey.</td>
+      <td><br>        1. Let x be the time taken to travel from A to B, and y be the time taken to travel from B to A.<br>        2. The total travel time is:<br>           x + y = 8<br>        3. The time from A to B is 2 hours less than the time from B to A:<br>           x = y - 2<br>        Final Equations:<br>           x + y = 8 and x = y - 2<br></td>
+    </tr>
+    <tr>
+      <td>A boat travels 120 kilometers downstream in 3 hours and returns upstream in 4 hours. The speed of the current is 2 km/h. Write a system of linear equations to represent this information and find the speed of the boat in still water.</td>
+      <td><br>        1. Let x be the speed of the boat in still water (in km/h), and y be the speed of the current (which is given as 2 km/h).<br>        2. The speed of the boat downstream is (x + y), and it takes 3 hours to travel 120 km:<br>           120 = 3(x + 2)<br>        3. The speed of the boat upstream is (x - y), and it takes 4 hours to travel 120 km:<br>           120 = 4(x - 2)<br>        Final Equations:<br>           120 = 3(x + 2) and 120 = 4(x - 2)<br></td>
+    </tr>
+  </tbody>
+</table>

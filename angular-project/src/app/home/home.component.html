@@ -1,0 +1,102 @@
+<div class="side-panel">
+  <div class="side-header">
+    <h1>Calc Mate</h1>
+    <h2>Your AI-powered math problem solver</h2>
+  </div>
+    
+  <button class="add-chat-btn" (click)="addChat()">New Chat</button>
+    
+  <div class="chat-list">
+    <ng-container *ngFor="let chat of chats">
+      <!-- Check if this is a header item -->
+      <div *ngIf="chat.isHeader" class="chat-category-header">
+        {{ chat.name }}
+      </div>
+        
+      <!-- Regular chat item -->
+      <div
+        *ngIf="!chat.isHeader"
+        class="chat-bar"
+        [ngClass]="{ 'active': chat.id === activeChatId }"
+        (click)="selectChat(chat.id)"
+      >
+        {{ chat.name }}
+        <button 
+          *ngIf="chat.id === activeChatId" 
+          class="download-icon-btn" 
+          (click)="download(); $event.stopPropagation();"
+          title="Download Chat"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="calc-mate-container">
+  <header class="calc-header">
+    <div class="spiral-spinner-container" *ngIf="loadingChat">
+      <div class="spiral-spinner"></div>
+    </div>
+      
+    <img
+      src="assets/img1.jpg"
+      alt="Description of image"
+      width="145"
+      height="145"
+      *ngIf="logoVisible && !loadingChat"
+    />
+      
+    <p class="tagline" *ngIf="taglineVisible && !loadingChat">
+      <span class="typing">{{ displayedText }}</span>
+      <span class="cursor">|</span>
+    </p>
+  </header>
+
+  <main class="calc-main" #chatContainer>
+    <div *ngIf="!loadingChat">
+      <div *ngFor="let message of getMessagesForChat()" class="chat-message" [ngClass]="message.sender">
+        <strong *ngIf="message.sender === 'user'">You:</strong>
+        <strong *ngIf="message.sender === 'ai'">Calc Mate:</strong>
+        <p [innerHTML]="message.message"></p>
+      </div>
+    </div>
+      
+    <div class="loading-message" *ngIf="loading">
+      <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </div>
+  </main>
+    
+  <div class="problem-input-container" *ngIf="inputVisible && !loadingChat">
+    <textarea
+      class="problem-input"
+      placeholder="Type your problem here..."
+      [(ngModel)]="problem"
+    ></textarea>
+      
+    <div class="button-contain">
+      <div class="dropdown">
+        <button *ngIf="isFirstQuestion" class="dropdown-btn">Solve</button>
+        <div class="dropdown-options">
+          <button (click)="solve('GPT')">Ask using GPT</button>
+          <button (click)="solve('Llama')">Ask using Llama</button>
+        </div>
+      </div>
+        
+      <div *ngIf="!isFirstQuestion" class="dropdown">
+        <button class="dropdown-btn" (click)="solve(selectedModel)">
+          {{ 'Solve with ' + selectedModel }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
